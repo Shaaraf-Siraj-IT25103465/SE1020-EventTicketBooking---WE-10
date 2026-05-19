@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Event</title>
+</head>
+<body>
+
+<h1>Edit Event</h1>
+
+<form action="/events/edit" method="post">
+
+    <!-- Hidden field to carry the event ID -->
+    <input type="hidden" name="eventId" th:value="${event.eventId}"/>
+
+    <label>Name:</label>
+    <input type="text" name="name" th:value="${event.name}" required/><br/><br/>
+
+    <label>Date:</label>
+    <input type="date" name="date" th:value="${event.date}" required/><br/><br/>
+
+    <label>Venue:</label>
+    <input type="text" name="venue" th:value="${event.venue}" required/><br/><br/>
+
+    <label>Category:</label>
+    <input type="text" name="category" th:value="${event.category}" required/><br/><br/>
+
+    <label>Total Seats:</label>
+    <input type="number" name="totalSeats" th:value="${event.totalSeats}" required/><br/><br/>
+
+    <label>Available Seats:</label>
+    <input type="number" name="availableSeats" th:value="${event.availableSeats}" required/><br/><br/>
+
+    <label>Ticket Price:</label>
+    <input type="number" name="ticketPrice" th:value="${event.ticketPrice}" step="0.01" required/><br/><br/>
+
+    <button type="submit">Update Event</button>
+    <a href="/events/">Cancel</a>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Event List</title>
+</head>
+<body>
+
+<h1>All Events</h1>
+
+<!-- Button to go to Add Event page -->
+<a href="/events/add">Add New Event</a>
+
+<!-- Table to display all events -->
+<table border="1">
+    <thead>
+    <tr>
+        <th>Event ID</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Venue</th>
+        <th>Category</th>
+        <th>Total Seats</th>
+        <th>Available Seats</th>
+        <th>Ticket Price</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through each event from controller -->
+    <tr th:each="event : ${events}">
+        <td th:text="${event.eventId}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.date}"></td>
+        <td th:text="${event.venue}"></td>
+        <td th:text="${event.category}"></td>
+        <td th:text="${event.totalSeats}"></td>
+        <td th:text="${event.availableSeats}"></td>
+        <td th:text="${event.ticketPrice}"></td>
+        <td>
+            <!-- Edit button -->
+            <a th:href="@{/events/edit/{id}(id=${event.eventId})}">Edit</a>
+            &nbsp;
+            <!-- Delete button -->
+            <a th:href="@{/events/delete/{id}(id=${event.eventId})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
