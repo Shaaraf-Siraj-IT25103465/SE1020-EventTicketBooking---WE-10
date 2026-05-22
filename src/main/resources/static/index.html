@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Management | Event Booking System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Venue Management</h1>
+                <p style="color: var(--text-muted);">Manage your event spaces and halls</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('add')">
+                <i class="fas fa-plus"></i> Add New Venue
+            </button>
+        </header>
+
+        <div class="card">
+            <div class="search-bar">
+                <div class="input-group">
+                    <input type="text" id="searchName" placeholder="Search by name..." onkeyup="handleSearch()">
+                </div>
+                <div class="input-group">
+                    <input type="text" id="searchLocation" placeholder="Search by location..." onkeyup="handleSearch()">
+                </div>
+                <button class="btn btn-outline" onclick="clearSearch()">Clear</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Capacity</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="venueTableBody">
+                        <!-- Data populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit -->
+    <div id="venueModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle" style="margin-bottom: 1.5rem;">Add Venue</h2>
+            <form id="venueForm">
+                <input type="hidden" id="venueId">
+                <div class="form-group">
+                    <label for="name">Venue Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="capacity">Capacity</label>
+                    <input type="number" id="capacity" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option value="Available">Available</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Venue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

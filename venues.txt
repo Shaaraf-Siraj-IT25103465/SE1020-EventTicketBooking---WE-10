@@ -1,0 +1,2 @@
+1|BMICH|Colombo|500|Access the module|Available
+2|BMICH|Colombo|200|.|Inactive
