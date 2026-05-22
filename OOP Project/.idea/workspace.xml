@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b4a07938-5dc5-48d8-8588-456dd454f177" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Event Ticket Booking System/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Event Ticket Booking System/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Event Ticket Booking System/src/main/java/com/eventticketbookingsystem/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Event Ticket Booking System/src/main/java/com/eventticketbookingsystem/controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Event Ticket Booking System/src/main/java/com/eventticketbookingsystem/filehandler/EventFileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Event Ticket Booking System/src/main/java/com/eventticketbookingsystem/filehandler/EventFileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Event Ticket Booking System/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Event Ticket Booking System/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Event Ticket Booking System/src/main/resources/templates/events/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Event Ticket Booking System/src/main/resources/templates/events/list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Event Ticket Booking System/src/main/java/com/eventticketbookingsystem/EventTicketBookingSystemApplication.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Event Ticket Booking System/src/main/java/com/eventticketbookingsystem/controller/EventController.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3E2mXvqRInqKBtpw8LqQzMFpbSD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.EventTicketBookingSystemApplicationTests.executor": "Run",
+    "JavaScript Debug.add.html.executor": "Run",
+    "Maven.Event-Ticket-Booking-System [clean].executor": "Run",
+    "Maven.Event-Ticket-Booking-System [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.EventTicketBookingSystemApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "recovered-events",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "Errors",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.EventTicketBookingSystemApplication">
+    <configuration name="EventTicketBookingSystemApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Event-Ticket-Booking-System" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eventticketbookingsystem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eventticketbookingsystem" />
+      <option name="MAIN_CLASS_NAME" value="com.eventticketbookingsystem.EventTicketBookingSystemApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="OOP Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="OOP Project" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="EventTicketBookingSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Event-Ticket-Booking-System" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.eventticketbookingsystem.EventTicketBookingSystemApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EventTicketBookingSystemApplicationTests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b4a07938-5dc5-48d8-8588-456dd454f177" name="Changes" comment="" />
+      <created>1779385084528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779385084528</updated>
+      <workItem from="1779385087186" duration="1110000" />
+      <workItem from="1779386220912" duration="15198000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -13,7 +13,10 @@ import java.util.List;
 
 public class EventFileHandler implements EventRepository {
 
-    private static final String FILE_PATH = "src/main/resources/events.xml";
+    private static final String FILE_PATH = "D:/Git repository/SE1020-EventTicketBooking---WE-10/OOP Project/Event Ticket Booking System/src/main/resources/events.xml";
+    static {
+        System.out.println("FILE PATH: " + FILE_PATH);
+    }
 
     // CREATE
     @Override
@@ -26,8 +29,9 @@ public class EventFileHandler implements EventRepository {
         Element root = doc.getDocumentElement();
         Element newEvent = doc.createElement("event");
         newEvent.appendChild(createEl(doc, "eventId",        event.getEventId()));
-        newEvent.appendChild(createEl(doc, "name",           event.getEventName()));
+        newEvent.appendChild(createEl(doc, "eventName",           event.getEventName()));
         newEvent.appendChild(createEl(doc, "date",           event.getDate()));
+        newEvent.appendChild(createEl(doc, "time", event.getTime()));
         newEvent.appendChild(createEl(doc, "venue",          event.getVenue()));
         newEvent.appendChild(createEl(doc, "category",       event.getCategory()));
         newEvent.appendChild(createEl(doc, "totalSeats",     String.valueOf(event.getTotalSeats())));
@@ -56,8 +60,9 @@ public class EventFileHandler implements EventRepository {
                 Element el = (Element) node;
                 Event event = new Event();
                 event.setEventId(getValue(el, "eventId"));
-                event.setEventName(getValue(el, "name"));
+                event.setEventName(getValue(el, "eventName"));
                 event.setDate(getValue(el, "date"));
+                event.setTime(getValue(el, "time"));
                 event.setVenue(getValue(el, "venue"));
                 event.setCategory(getValue(el, "category"));
                 event.setTotalSeats(Integer.parseInt(getValue(el, "totalSeats")));
@@ -81,8 +86,9 @@ public class EventFileHandler implements EventRepository {
         for (int i = 0; i < nodeList.getLength(); i++) {
             Element el = (Element) nodeList.item(i);
             if (getValue(el, "eventId").equals(updated.getEventId())) {
-                el.getElementsByTagName("name").item(0).setTextContent(updated.getEventName());
+                el.getElementsByTagName("eventName").item(0).setTextContent(updated.getEventName());
                 el.getElementsByTagName("date").item(0).setTextContent(updated.getDate());
+                el.getElementsByTagName("time").item(0).setTextContent(updated.getTime());
                 el.getElementsByTagName("venue").item(0).setTextContent(updated.getVenue());
                 el.getElementsByTagName("category").item(0).setTextContent(updated.getCategory());
                 el.getElementsByTagName("totalSeats").item(0).setTextContent(String.valueOf(updated.getTotalSeats()));

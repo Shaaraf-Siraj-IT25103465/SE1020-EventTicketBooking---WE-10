@@ -25,6 +25,7 @@ public class EventController {
             model.addAttribute("events", eventService.getAllEvents());
             return "events/list";
         } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
     }
@@ -44,6 +45,7 @@ public class EventController {
             eventService.addEvent(event);
             return "redirect:/events/";
         } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
     }
@@ -58,6 +60,7 @@ public class EventController {
                     .findFirst().orElse(null));
             return "events/edit";
         } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
     }
@@ -69,6 +72,7 @@ public class EventController {
             eventService.updateEvent(event);
             return "redirect:/events/";
         } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
     }
@@ -80,6 +84,7 @@ public class EventController {
             eventService.deleteEvent(id);
             return "redirect:/events/";
         } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
     }
