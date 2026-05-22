@@ -1,51 +1,73 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Event List</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+<div class="container">
+    <header>
+        <h1>Event Management</h1>
+        <a th:href="@{/events/add}" class="btn btn-primary">Create New Event</a>
+    </header>
 
-<h1>All Events</h1>
+    <main class="dashboard">
+        <div class="card">
+            <div class="table-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Event ID</th>
+                        <th>Name</th>
+                        <th>Date & Time</th>
+                        <th>Venue</th>
+                        <th>Category</th>
+                        <th>Total Seats</th>
+                        <th>Available Seats</th>
+                        <th>Ticket Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="event : ${events}">
+                        <td th:text="${event.eventId}"></td>
+                        <td><strong th:text="${event.eventName}"></strong></td>
+                        <td>
+                            <span th:text="${event.date}"></span> @
+                            <span th:text="${event.time}"></span>
+                        </td>
+                        <td th:text="${event.venue}"></td>
+                        <td>
+                            <span class="badge badge-available" th:text="${event.category}"></span>
+                        </td>
+                        <td th:text="${event.totalSeats}"></td>
+                        <td>
+                                <span th:class="${event.availableSeats > 0} ? 'badge badge-available' : 'badge badge-inactive'"
+                                      th:text="${event.availableSeats}"></span>
+                        </td>
+                        <td th:text="${'$' + #numbers.formatDecimal(event.ticketPrice, 1, 2)}"></td>
+                        <td>
+                            <div class="actions">
+                                <a th:href="@{/events/edit/{id}(id=${event.eventId})}" class="action-btn edit-btn" title="Edit Event">📝</a>
+                                <a th:href="@{/events/delete/{id}(id=${event.eventId})}" class="action-btn delete-btn" title="Delete Event"
+                                   onclick="return confirm('Are you sure you want to delete this event?')">🗑️</a>
+                            </div>
+                        </td>
+                    </tr>
 
-<!-- Button to go to Add Event page -->
-<a href="/events/add">Add New Event</a>
-
-<!-- Table to display all events -->
-<table border="1">
-    <thead>
-    <tr>
-        <th>Event ID</th>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Venue</th>
-        <th>Category</th>
-        <th>Total Seats</th>
-        <th>Available Seats</th>
-        <th>Ticket Price</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Loop through each event from controller -->
-    <tr th:each="event : ${events}">
-        <td th:text="${event.eventId}"></td>
-        <td th:text="${event.eventName}"></td>
-        <td th:text="${event.date}"></td>
-        <td th:text="${event.venue}"></td>
-        <td th:text="${event.category}"></td>
-        <td th:text="${event.totalSeats}"></td>
-        <td th:text="${event.availableSeats}"></td>
-        <td th:text="${event.ticketPrice}"></td>
-        <td>
-            <!-- Edit button -->
-            <a th:href="@{/events/edit/{id}(id=${event.eventId})}">Edit</a>
-            &nbsp;
-            <!-- Delete button -->
-            <a th:href="@{/events/delete/{id}(id=${event.eventId})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
+                    <tr th:if="${#lists.isEmpty(events)}">
+                        <td colspan="9" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                            No events found in storage. Click "Create New Event" to add one!
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

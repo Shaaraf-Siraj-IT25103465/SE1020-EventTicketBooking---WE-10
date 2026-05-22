@@ -19,7 +19,7 @@ public class EventController {
 
 
     // READ - list all events
-    @GetMapping("/") //Handles GET request - when user visit URL in browser
+    @GetMapping("/list") //Handles GET request - when user visit URL in browser
     public String listEvents(Model model) {
         try {
             model.addAttribute("events", eventService.getAllEvents());
@@ -54,10 +54,20 @@ public class EventController {
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable String id, Model model) {
         try {
-            model.addAttribute("event", eventService.getAllEvents()
+            // Search for the event in your text file database
+            Event existingEvent = eventService.getAllEvents()
                     .stream()
                     .filter(e -> e.getEventId().equals(id))
-                    .findFirst().orElse(null));
+                    .findFirst()
+                    .orElse(null);
+
+            // Safety Check: If not found, create a blank object instead of passing null
+            if (existingEvent == null) {
+                existingEvent = new Event();
+                existingEvent.setEventId(id); // Assign the ID so it's not empty
+            }
+
+            model.addAttribute("event", existingEvent);
             return "events/edit";
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +76,7 @@ public class EventController {
     }
 
     // UPDATE - submit edit form
-    @PostMapping("/edit")
+    @PostMapping("/update")
     public String updateEvent(@ModelAttribute Event event) {
         try {
             eventService.updateEvent(event);

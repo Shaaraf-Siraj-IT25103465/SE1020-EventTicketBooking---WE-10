@@ -1,42 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Edit Event</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<h1>Edit Event</h1>
+<div class="container" style="display: flex; justify-content: center; align-items: center; min-height: 85vh;">
 
-<form action="/events/edit" method="post">
+    <div class="card" style="width: 100%; max-width: 550px; background: white;">
+        <h1 style="margin-bottom: 1.5rem; text-align: center;">Modify Event Details</h1>
 
-    <!-- Hidden field to carry the event ID -->
-    <input type="hidden" name="eventId" th:value="${event.eventId}"/>
+        <form th:action="@{/events/update}" method="post" th:object="${event}">
 
-    <label>Name:</label>
-    <input type="text" name="name" th:value="${event.name}" required/><br/><br/>
+            <input type="hidden" name="eventId" th:value="${event.eventId}">
 
-    <label>Date:</label>
-    <input type="date" name="date" th:value="${event.date}" required/><br/><br/>
+            <div class="form-group">
+                <label>Event Name</label>
+                <label>
+                    <input type="text" th:field="*{eventName}" required>
+                </label>
+            </div>
 
-    <label>Venue:</label>
-    <input type="text" name="venue" th:value="${event.venue}" required/><br/><br/>
+            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Category</label>
+                    <select th:field="*{category}">
+                        <option value="Concert">Concert</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Workshop">Workshop</option>
+                    </select>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Venue</label>
+                    <input type="text" th:field="*{venue}" required>
+                </div>
+            </div>
 
-    <label>Category:</label>
-    <input type="text" name="category" th:value="${event.category}" required/><br/><br/>
+            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Event Date</label>
+                    <label>
+                        <input type="date" th:field="*{date}" required>
+                    </label>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Event Time</label>
+                    <label>
+                        <input type="time" th:field="*{time}" required>
+                    </label>
+                </div>
+            </div>
 
-    <label>Total Seats:</label>
-    <input type="number" name="totalSeats" th:value="${event.totalSeats}" required/><br/><br/>
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Ticket Price ($)</label>
+                    <label>
+                        <input type="number" step="0.01" th:field="*{ticketPrice}" required>
+                    </label>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Total Capacity</label>
+                    <label>
+                        <input type="number" th:field="*{totalSeats}" required>
+                    </label>
+                </div>
+                <input type="hidden" name="availableSeats" th:value="${event.availableSeats}">
+            </div>
 
-    <label>Available Seats:</label>
-    <input type="number" name="availableSeats" th:value="${event.availableSeats}" required/><br/><br/>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                <a th:href="@{/events/list}" class="btn btn-outline" style="text-decoration: none;">Cancel Changes</a>
+                <button type="submit" class="btn btn-primary">Update Configuration</button>
+            </div>
 
-    <label>Ticket Price:</label>
-    <input type="number" name="ticketPrice" th:value="${event.ticketPrice}" step="0.01" required/><br/><br/>
-
-    <button type="submit">Update Event</button>
-    <a href="/events/">Cancel</a>
-
-</form>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
