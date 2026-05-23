@@ -1,0 +1,5 @@
+REV-1716789100001|EVT-001|Rock Night 2025|USR-101|alice_perera|5|Absolutely phenomenal event! The sound system was top notch and the performers were incredible.|2025-05-10 19:30:00|APPROVED|VERIFIED
+REV-1716789100002|EVT-001|Rock Night 2025|USR-102|nimal_silva|4|Great atmosphere and well organised. A little crowded but overall worth every rupee.|2025-05-11 10:15:00|APPROVED|PUBLIC
+REV-1716789100003|EVT-002|Comedy Fiesta|USR-103|kumari_de|3|Some acts were funny, others felt a bit rushed. Decent value.|2025-05-12 14:00:00|PENDING|PUBLIC
+REV-1716789100004|EVT-002|Comedy Fiesta|USR-101|alice_perera|5|Best comedy show I have attended in years. Laughed non-stop!|2025-05-12 18:45:00|APPROVED|VERIFIED
+REV-1716789100005|EVT-003|Tech Summit 2025|USR-104|priya_fernando|2|Expected more depth in the sessions. Too basic for experienced developers.|2025-05-13 11:00:00|REJECTED|PUBLIC
