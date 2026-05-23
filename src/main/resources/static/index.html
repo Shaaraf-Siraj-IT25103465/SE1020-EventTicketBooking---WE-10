@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Create Transaction</h2>
+
+    <input type="text" id="search" placeholder="Search by Event ID">
+    <button onclick="searchTransaction()">Search</button>
+
+    <div class="card">
+
+        <input type="text" id="eventId" placeholder="Event ID">
+        <input type="text" id="customerName" placeholder="Customer Name">
+        <input type="number" id="amount" placeholder="Amount">
+
+        <select id="transactionType">
+            <option value="DEBIT_CARD">Debit Card</option>
+            <option value="CREDIT_CARD">Credit Card</option>
+            <option value="BANK_TRANSACTION">Bank Transaction</option>
+        </select>
+
+        <button class="btn-submit" onclick="createTransaction()">Submit</button>
+        <button class="btn-show" onclick="loadTransactions()">Show Transactions</button>
+
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Type</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <h3 id="totalAmount">Total: 0 LKR</h3>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
