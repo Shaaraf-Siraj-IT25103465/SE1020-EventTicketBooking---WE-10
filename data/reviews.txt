@@ -3,3 +3,4 @@ REV-1716789100002|EVT-001|Rock Night 2025|USR-102|nimal_silva|4|Great atmosphere
 REV-1716789100003|EVT-002|Comedy Fiesta|USR-103|kumari_de|3|Some acts were funny, others felt a bit rushed. Decent value.|2025-05-12 14:00:00|PENDING|PUBLIC
 REV-1716789100004|EVT-002|Comedy Fiesta|USR-101|alice_perera|5|Best comedy show I have attended in years. Laughed non-stop!|2025-05-12 18:45:00|APPROVED|VERIFIED
 REV-1716789100005|EVT-003|Tech Summit 2025|USR-104|priya_fernando|2|Expected more depth in the sessions. Too basic for experienced developers.|2025-05-13 11:00:00|REJECTED|PUBLIC
+REV-1779764850954|EVT-001|Comedy Fiesta|USR-001|TestUser|5|Awulak nah, it was good!|2026-05-26 08:37:30|PENDING|VERIFIED

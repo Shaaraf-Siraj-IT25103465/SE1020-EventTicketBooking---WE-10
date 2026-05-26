@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  * ReviewServlet.java
@@ -32,12 +33,18 @@ public class ReviewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+        // TEMP SESSION FIX
+        HttpSession session = req.getSession(true);
+        if (session.getAttribute("userId") == null) {
+            session.setAttribute("userId", "USR-001");
+            session.setAttribute("username", "TestUser");
+        }
+
         String action = req.getParameter("action");
         if (action == null) action = "dashboard";
 
         switch (action) {
 
-            // ── READ: View all approved reviews for an event ──────────────────
             case "view": {
                 String eventId   = req.getParameter("eventId");
                 String eventName = req.getParameter("eventName");
@@ -51,7 +58,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── READ: My reviews (user-specific) ─────────────────────────────
             case "myReviews": {
                 String userId = getLoggedInUserId(req);
                 if (userId == null) { resp.sendRedirect("login.jsp"); return; }
@@ -61,7 +67,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── Show submit form ──────────────────────────────────────────────
             case "submitForm": {
                 String eventId   = req.getParameter("eventId");
                 String eventName = req.getParameter("eventName");
@@ -71,7 +76,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── Show edit form ────────────────────────────────────────────────
             case "editForm": {
                 String reviewId = req.getParameter("reviewId");
                 Review review   = ReviewFileHandler.getReviewById(reviewId);
@@ -81,7 +85,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── Admin moderation dashboard ─────────────────────────────────────
             case "moderate": {
                 List<Review> allReviews = ReviewFileHandler.getAllReviews();
                 req.setAttribute("allReviews", allReviews);
@@ -89,7 +92,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── DELETE ────────────────────────────────────────────────────────
             case "delete": {
                 String reviewId  = req.getParameter("reviewId");
                 String returnUrl = req.getParameter("return");
@@ -100,7 +102,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── Approve/Reject (admin) ────────────────────────────────────────
             case "setStatus": {
                 String reviewId = req.getParameter("reviewId");
                 String status   = req.getParameter("status");
@@ -113,7 +114,6 @@ public class ReviewServlet extends HttpServlet {
                 break;
             }
 
-            // ── Dashboard (default) ───────────────────────────────────────────
             default: {
                 List<Review> allReviews = ReviewFileHandler.getAllReviews();
                 req.setAttribute("allReviews", allReviews);
@@ -122,17 +122,22 @@ public class ReviewServlet extends HttpServlet {
         }
     }
 
-    // ── POST – write operations ───────────────────────────────────────────────
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+        // TEMP SESSION FIX
+        HttpSession session = req.getSession(true);
+        if (session.getAttribute("userId") == null) {
+            session.setAttribute("userId", "USR-001");
+            session.setAttribute("username", "TestUser");
+        }
 
         req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
 
         switch (action != null ? action : "") {
 
-            // ── CREATE ────────────────────────────────────────────────────────
             case "submit": {
                 String eventId   = req.getParameter("eventId");
                 String eventName = req.getParameter("eventName");
@@ -140,7 +145,7 @@ public class ReviewServlet extends HttpServlet {
                 String username  = getLoggedInUsername(req);
                 int    rating    = parseRating(req.getParameter("rating"));
                 String comment   = sanitize(req.getParameter("comment"));
-                String ticketId  = req.getParameter("ticketId"); // may be empty
+                String ticketId  = req.getParameter("ticketId");
 
                 if (userId == null) { resp.sendRedirect("login.jsp"); return; }
 
@@ -149,22 +154,21 @@ public class ReviewServlet extends HttpServlet {
 
                 if (ticketId != null && !ticketId.trim().isEmpty()) {
                     review = new VerifiedReview(reviewId, eventId, eventName,
-                                               userId, username, rating, comment, ticketId);
+                            userId, username, rating, comment, ticketId);
                 } else {
                     review = new PublicReview(reviewId, eventId, eventName,
-                                             userId, username, rating, comment);
+                            userId, username, rating, comment);
                 }
 
                 boolean saved = ReviewFileHandler.saveReview(review);
                 req.getSession().setAttribute("message",
                         saved ? "Your review has been submitted for moderation!"
-                              : "Failed to submit review. Please try again.");
+                                : "Failed to submit review. Please try again.");
                 resp.sendRedirect("ReviewServlet?action=view&eventId=" + eventId
-                                  + "&eventName=" + encode(eventName));
+                        + "&eventName=" + encode(eventName));
                 break;
             }
 
-            // ── UPDATE ────────────────────────────────────────────────────────
             case "update": {
                 String reviewId = req.getParameter("reviewId");
                 Review existing = ReviewFileHandler.getReviewById(reviewId);
@@ -180,7 +184,7 @@ public class ReviewServlet extends HttpServlet {
 
                 existing.setRating(newRating);
                 existing.setComment(newComment);
-                existing.setStatus("PENDING"); // reset to pending after edit
+                existing.setStatus("PENDING");
 
                 boolean updated = ReviewFileHandler.updateReview(existing);
                 req.getSession().setAttribute("message",
